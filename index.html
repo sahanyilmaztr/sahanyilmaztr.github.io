@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="my.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"></script>
+  <meta charset="utf-8">
+ <Title>ŞAHAN YILMAZ-DC MOTOR</Title>
+</head>
+<body>
+  <div class="s12">
+  <br>ŞAHAN YILMAZ-DC MOTOR</div>
+  
+  <br>                                                                                      
+
+
+  
+    <div class="s11">MIKNATIS YAKINLIK AYARI</div>
+    
+<div>
+  <script>
+let armature;
+let stator;
+let angle = 0;
+let speed = 0.00;
+let speedSlider;
+let bg
+let button;
+let img1;
+let img2;
+let messageSent = false;
+let voltageLabel;
+
+function setup() {
+  createCanvas(400, 400);
+ 
+  armature = new Armature(width/2, height/2);
+  stator = new Stator(width/2, height/2);
+  img1 = createImg("n.png");
+  img2 = createImg("s.png");
+  speedSlider = createSlider(0, 0.5, 0.05, 0.01);
+  speedSlider.position(490, 100);
+
+
+
+  
+  speedSlider.style('-webkit-appearance', 'none');
+speedSlider.style('appearance', 'none');
+speedSlider.style('width', '300px');
+speedSlider.style('height', '20px');
+speedSlider.style('background', '#000000');
+speedSlider.style('outline', 'none');
+speedSlider.style('opacity', '0.7');
+speedSlider.style('-webkit-transition', 'opacity .2s');
+speedSlider.style("border-radius", "8px");
+speedSlider.style('transition', 'opacity .2s');
+
+
+voltageLabel = createP('0 V');
+  voltageLabel.position(590, 120);
+
+
+
+}
+
+
+
+
+function draw() {
+  stator.display();
+  speed = speedSlider.value();
+  armature.rotate(angle);
+  armature.display();
+  angle += speed;
+  let voltage = speedSlider.value() * 100;
+  voltageLabel.html(voltage.toFixed(2) + ' voltaj değeri');
+
+  let val = speedSlider.value();
+  let x = map(val, 12, 0, 650, 55);
+  let y = map(val, 12, 0, 120, 240);
+  let x2 = map(val, 0, 12, -170, -20);
+  let y2 = map(val, 0, 12, -360, -400);
+  img1.position(x, y);
+  img2.position(-x2, -y2);
+
+  let img3 = createImg("dcc.png");
+  img3.position(width/2 - 194, height/2 - 3);
+  img3.size(420, 350);
+  img3.style("z-index", "-2");
+
+}
+
+
+
+
+class Armature {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.radius = 50;
+    this.coilColor = color(1);
+    this.rotorColor = color(0);
+  }
+
+  rotate(angle) {
+    this.angle = angle;
+  }
+
+  display() {
+    push();
+    translate(this.x, this.y);
+    rotate(this.angle);
+    fill(this.coilColor);
+    ellipse(0, -this.radius/2, this.radius/2, this.radius);
+    ellipse(0, this.radius/2, this.radius/2, this.radius);
+    fill(this.rotorColor);
+    ellipse(0, 0, this.radius/2, this.radius);
+    pop();
+  }
+}
+
+
+class Stator {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.radius = 60;
+    this.color = color(200);
+  }
+
+  display() {
+    push();
+    translate(this.x, this.y);
+    fill(this.color);
+    ellipse(0, 0, this.radius*2, this.radius*2);
+    pop();
+  }
+}
+
+  </script>
+</div>
+  <br>
+  <br>
+  <div class="s13"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><p>Merhaba,
+
+    Sizlere DC motorun çalışma prensibini anlatan  proje hakkında bilgi vereceğim. Bu proje manyetik alanların etkisiyle gerilim değerinin arttığını gösteren basit bir deneydir.
+    
+    DC motorlar, elektrik motorları arasında en yaygın kullanılan tiplerden biridir. Bu motorlar manyetik alanların etkisiyle dönme hareketi oluşturarak, birçok endüstriyel ve ticari uygulamada kullanılırlar. Motorun çalışması, manyetik alanın etkisi altındaki bobinlerin döndürülmesiyle gerçekleşir.
+    
+    Proje, manyetik alanların etkisiyle gerilim değerinin arttığını göstererek, DC motorun çalışma prensibini basit bir şekilde açıklamaktadır. Bu proje sayesinde, manyetik alanların nasıl çalıştığı ve elektrik motorlarının nasıl çalıştığı hakkında daha fazla bilgi edinebilirsiniz.
+    
+    Projenin uygulanması oldukça basit ve eğlencelidir.  Mıknatısın DC motorun üzerine yaklaştırılmasıyla birlikte, manyetik alanın etkisiyle voltaj değeri artacaktır. Bu deney, manyetik alanın elektrik akımına etkisini göstermektedir.
+    
+    Sonuç olarak, bu projeyi yaparak, manyetik alanların etkisiyle gerilim değerinin artmasını gözlemleyerek, DC motorun çalışma prensibini anlamış olacaksınız. Ayrıca, bu projeyi yaparak, manyetik alanların nasıl çalıştığını ve elektrik motorlarının nasıl çalıştığını daha iyi anlayabileceksiniz.Sizlere DC motorun çalışma prensibini anlatan bir proje hakkında bilgi vereceğim. Bu projede manyetik alanların etkisiyle gerilim değerinin arttığını gösteren basit bir deney yapacağız. Bu deney sayesinde, DC motorun çalışma prensibini daha iyi anlayabileceksiniz.
+
+    DC motorlar, birçok endüstriyel ve ticari uygulamada kullanılan en yaygın elektrik motorlarından biridir. Bu motorlar manyetik alanların etkisiyle dönme hareketi oluşturarak çalışırlar. Motorun çalışması, manyetik alanın etkisi altındaki bobinlerin döndürülmesiyle gerçekleşir.
+    
+    Proje uygulanması oldukça basit bir deneydir. Bu deney için bir DC motor, manyetik bir mıknatıs ve bir voltmetre kullanmanız gerekmektedir. Deneyi yapmak için mıknatısı DC motorun üzerine yaklaştırdığınızda, manyetik alanın etkisiyle voltaj değeri artacaktır. Bu deney, manyetik alanın elektrik akımına etkisini göstermektedir.
+    
+    Bu proje sayesinde manyetik alanların etkisiyle gerilim değerinin artışını gözlemleyerek, DC motorun çalışma prensibini daha iyi anlayabilirsiniz. Ayrıca, manyetik alanların nasıl çalıştığını ve elektrik motorlarının nasıl çalıştığını öğrenebilirsiniz.
+    
+    Deney yaparak, bu projeyi yapan kişi gibi manyetik alanların etkisiyle gerilim değerinin artmasını gözlemleyebilirsiniz. Bu sayede, DC motorun çalışma prensibini daha iyi anlayabilirsiniz.</p></div>
+
+</body>
+</html>
