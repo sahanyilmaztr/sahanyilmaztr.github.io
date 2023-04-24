@@ -1,8 +1,0 @@
-
-
-  let img = createImg("dcc.png");
-  let imgWidth = 500;
-  let imgHeight = 500;
-  img.position(width/500 - imgWidth/300, height/500 - imgHeight/500);
-  img.size(imgWidth, imgHeight);
-  img.style('z-index', '-1'); 
