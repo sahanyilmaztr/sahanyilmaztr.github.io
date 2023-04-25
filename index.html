@@ -58,6 +58,11 @@ speedSlider.style('transition', 'opacity .2s');
 voltageLabel = createP('0 V');
   voltageLabel.position(590, 120);
 
+    
+  let img3 = createImg("dcc.png");
+  img3.position(width/2 - 194, height/2 - 3);
+  img3.size(420, 350);
+  img3.style("z-index", "-2");
 
 
 }
@@ -82,10 +87,6 @@ function draw() {
   img1.position(x, y);
   img2.position(-x2, -y2);
 
-  let img3 = createImg("dcc.png");
-  img3.position(width/2 - 194, height/2 - 3);
-  img3.size(420, 350);
-  img3.style("z-index", "-2");
 
 }
 
